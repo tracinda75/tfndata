@@ -1207,7 +1207,7 @@ const AppState = {
 };
 
 // URL de tu backend en Render
-const BACKEND_URL = 'https://tracinda-boletin.onrender.com';
+const BACKEND_URL = 'https://tfndata.onrender.com';
 
 // Variables globales para filtros y ordenamiento
 let currentSort = { table: null, column: null, direction: null };
