@@ -68,7 +68,17 @@ def leer_excel_y_convertir(archivo_excel):
         raise Exception(f"Error procesando Excel: {str(e)}")
 
 @app.route('/')
-def home():
+def dashboard():
+    """Sirve el dashboard principal desde index.html"""
+    try:
+        with open('index.html', 'r', encoding='utf-8') as f:
+            return f.read()
+    except FileNotFoundError:
+        return "Error: index.html no encontrado. Asegúrate de que el archivo esté en el repositorio.", 404
+
+@app.route('/api/status')
+def api_status():
+    """Endpoint para verificar el estado del backend"""
     return "Backend del Boletín de Trazabilidad funcionando correctamente"
 
 @app.route('/admin')
@@ -107,10 +117,11 @@ def admin():
         
         <div style="margin-top: 30px;">
             <h3>Enlaces útiles:</h3>
+            <p><a href="/">Ver Dashboard Principal</a></p>
             <p><a href="/api/datos" target="_blank">Ver datos JSON</a></p>
             <p><a href="/api/test" target="_blank">Test de funcionalidad</a></p>
             <p><strong>URL del API:</strong><br>
-            <code>https://tracinda-boletin.onrender.com/api/datos</code></p>
+            <code>https://tfndata.onrender.com/api/datos</code></p>
         </div>
         
         <script>
